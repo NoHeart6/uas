@@ -1,264 +1,339 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Astrit & Matcha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Temukan kombinasi sempurna antara kopi dan matcha di Astrid & Matcha. Lihat menu kami yang menyegarkan dan lezat.">
+  <title>Astrit & Matcha</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
 
-        /* Efek Halus untuk Transisi */
-        a, .btn {
-            transition: all 0.3s ease;
-        }
+    a, .btn {
+      transition: all 0.3s ease;
+    }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-            padding: 20px 0;
-            transition: background-color 0.3s ease;
-        }
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      padding: 10px 0;
+      transition: background-color 0.3s ease;
+    }
 
-        header.scrolled {
-            background-color: #121212;
-        }
+    header.scrolled {
+      background-color: #121212;
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px;
+    }
 
-        nav a:hover {
-            color: #ff33cc;
-            text-shadow: 0 0 10px #ff33cc;
-        }
+    nav a:hover {
+      color: #ff33cc;
+      text-shadow: 0 0 10px #ff33cc;
+    }
 
-        /* Efek Parallax Bertingkat */
-        #hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
+    #hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .parallax {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
+    .parallax {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
 
-        .parallax-1 {
-            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710584?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80');
-            z-index: -3;
-        }
+    .parallax-1 {
+      background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710584?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80');
+      z-index: -3;
+    }
 
-        .parallax-2 {
-            background-image: url('https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2738&q=80');
-            opacity: 0.8;
-            z-index: -2;
-        }
+    .parallax-2 {
+      background-image: url('https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2738&q=80');
+      opacity: 0.8;
+      z-index: -2;
+    }
 
-        .hero-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 1;
-            text-shadow: 0 0 20px #000000;
-        }
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+      text-shadow: 0 0 20px #000000;
+    }
 
-        .hero-text h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 8vw;
-            color: transparent;
-            -webkit-text-stroke: 2px #ffffff;
-            background-image: url('https://i.imgur.com/Y3B3W2W.png');
-            background-clip: text;
-            background-size: 400%;
-            animation: glitch-animation 2s linear infinite;
-        }
+    .hero-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4vw;
+      color: transparent;
+      -webkit-text-stroke: 2px #ffffff;
+      background-image: url('https://i.imgur.com/Y3B3W2W.png');
+      background-clip: text;
+      background-size: 400%;
+      animation: glitch-animation 2s linear infinite;
+    }
 
-        @keyframes glitch-animation {
-            0% { background-position: 0 0; }
-            25% { background-position: 100% 0; }
-            50% { background-position: 0 100%; }
-            75% { background-position: 100% 100%; }
-            100% { background-position: 0 0; }
-        }
+    @keyframes glitch-animation {
+      0% { background-position: 0 0; }
+      25% { background-position: 100% 0; }
+      50% { background-position: 0 100%; }
+      75% { background-position: 100% 100%; }
+      100% { background-position: 0 0; }
+    }
 
-        .hero-text p {
-            font-size: 2vw;
-            color: #cccccc;
-            margin-top: 10px;
-        }
+    .hero-text p {
+      font-size: 1.5vw;
+      color: #cccccc;
+      margin-top: 10px;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: transparent;
-            color: #ffffff;
-            text-decoration: none;
-            border: 2px solid #ffffff;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: transparent;
+      color: #ffffff;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      font-weight: bold;
+    }
 
-        .btn:hover {
-            background-color: #ff33cc;
-            color: #121212;
-            border-color: #ff33cc;
-            cursor: pointer;
-            transform: scale(1.05); /* Efek Microinteraction */
-        }
+    .btn:hover {
+      background-color: #ff33cc;
+      color: #121212;
+      border-color: #ff33cc;
+      cursor: pointer;
+      transform: scale(1.05);
+    }
 
-        /* Animasi Kenburns Effect */
-        #menu {
-            padding: 50px 0;
-            background-color: #121212; 
-        }
+    #menu {
+      padding: 50px 0;
+      background-color: #121212;
+    }
 
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .menu-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      perspective: 1000px;
+    }
 
-        .menu-item {
-            background-color: #222222;
-            margin: 10px;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            color: #ffffff;
-            width: 300px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Efek Bayangan Halus */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi Halus */
-        }
+    .menu-item {
+      background-color: #222222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      color: #ffffff;
+      width: 100%;
+      max-width: 300px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
 
-        .menu-item:hover {
-            transform: translateY(-10px); /* Efek Hover Lebih Halus */
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Efek Bayangan Lebih Jelas */
-        }
+    .menu-item:hover {
+      transform: translateY(-10px) rotateY(5deg);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
 
-        .menu-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            animation: kenburns 10s ease-in-out infinite alternate;
-        }
+    .menu-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease;
+    }
 
-        @keyframes kenburns {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
+    .menu-item:hover img {
+      transform: scale(1.1);
+    }
 
-        .menu-item h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
+    .menu-item h3 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
 
-        .menu-item p {
-            color: #cccccc;
-        }
+    .menu-item p {
+      color: #cccccc;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #121212;
-            color: #ffffff;
-        }
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #121212;
+      color: #ffffff;
+    }
 
-        footer p {
-            margin: 0;
-        }
+    footer p {
+      margin: 0;
+    }
 
-        /* Video Background - Optional */
-        /* ... (tambahkan kode CSS untuk video background di sini jika dibutuhkan) ... */
-    </style>
+    .price {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 6vw;
+      }
+
+      .hero-text p {
+        font-size: 2vw;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Menu</a>
-            <a href="#">Galeri</a>
-            <a href="#">Lokasi</a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Menu</a>
+      <a href="#">Galeri</a>
+      <a href="#">Lokasi</a>
+    </nav>
+  </header>
 
-    <section id="hero">
-        <div class="parallax parallax-1"></div>
-        <div class="parallax parallax-2"></div>
-        <div class="hero-text">
-            <h1>Astrit & Matcha</h1>
-            <p>Temukan Kombinasi Sempurna Antara Kopi dan Matcha</p>
-            <a href="#menu" class="btn">Lihat Menu</a> 
-        </div>
-    </section>
+  <section id="hero">
+    <div class="parallax parallax-1"></div>
+    <div class="parallax parallax-2"></div>
+    <div class="hero-text">
+      <h1>Astrid & Matcha</h1>
+      <p>Temukan Kombinasi Sempurna Antara Kopi dan Matcha</p>
+      <a href="#menu" class="btn">Lihat Menu</a>
+    </div>
+  </section>
 
-    <section id="menu">
-        <h2>Menu Favorit</h2>
-        <div class="menu-container">
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1406&q=80" alt="Matcha Latte">
-                <h3>Matcha Latte</h3>
-                <p>Minuman matcha klasik dengan susu dan sedikit rasa manis.</p>
-            </div>
-    </section>
+  <section id="menu">
+    <div class="menu-container">
+      <h2>Minuman Matcha</h2>
+      <div class="menu-item" data-aos="fade-up">
+        <img src="https://via.placeholder.com/300x200.png?text=Matcha+Latte" alt="Matcha Latte">
+        <h3>Matcha Latte Klasik</h3>
+        <p>Matcha asli berpadu dengan susu segar, sentuhan manis yang lembut.</p>
+        <p class="price">Rp 30.000</p>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://via.placeholder.com/300x200.png?text=Iced+Matcha+Latte" alt="Iced Matcha Latte">
+        <h3>Iced Matcha Latte</h3>
+        <p>Kesegaran matcha dan susu dingin, sempurna untuk hari yang cerah.</p>
+        <p class="price">Rp 35.000</p>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://via.placeholder.com/300x200.png?text=Matcha+Strawberry+Latte" alt="Matcha Strawberry Latte">
+        <h3>Matcha Strawberry Latte</h3>
+        <p>Perpaduan unik matcha dan strawberry segar, manis dan menyegarkan!</p>
+        <p class="price">Rp 40.000</p>
+      </div>
 
-    <footer>
-        <p>&copy; 2024 Astrid & Matcha</p>
-    </footer>
+      <h2>Kopi Spesial</h2>
+      <div class="menu-item" data-aos="fade-up">
+        <img src="https://via.placeholder.com/300x200.png?text=Espresso+Martini" alt="Espresso Martini">
+        <h3>Espresso Martini</h3>
+        <p>Espresso pekat bercampur vodka dan sentuhan kopi liqueur.</p>
+        <p class="price">Rp 50.000</p>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://via.placeholder.com/300x200.png?text=Affogato" alt="Affogato">
+        <h3>Affogato</h3>
+        <p>Kelembutan es krim vanilla disiram dengan espresso panas.</p>
+        <p class="price">Rp 40.000</p>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://via.placeholder.com/300x200.png?text=Vietnam+Drip" alt="Vietnam Drip">
+        <h3>Vietnam Drip</h3>
+        <p>Kopi Vietnam klasik, diseduh perlahan untuk cita rasa otentik.</p>
+        <p class="price">Rp 45.000</p>
+      </div>
 
-    <script>
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 0) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+      <h2>Camilan</h2>
+      <div class="menu-item" data-aos="fade-up">
+        <img src="https://via.placeholder.com/300x200.png?text=Croissant" alt="Croissant">
+        <h3>Croissant</h3>
+        <p>Croissant renyah dengan aroma mentega yang harum.</p>
+        <p class="price">Rp 20.000</p>
+      </div>
+      <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://via.placeholder.com/300x200.png?text=Red+Velvet+Cake" alt="Red Velvet Cake">
+        <h3>Red Velvet Cake</h3>
+        <p>Kue lembut dengan lapisan krim keju yang lezat.</p>
+        <p class="price">Rp 35.000</p>
+      </div>
+    </div>
+  </section>
 
-            // Efek Parallax
-            const parallax1 = document.querySelector('.parallax-1');
-            const parallax2 = document.querySelector('.parallax-2');
+  <footer>
+    <p>&copy; 2024 Astrit & Matcha</p>
+  </footer>
 
-            let parallax1Speed = 0.1;
-            let parallax2Speed = 0.2;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+    // Animasi dengan Anime.js
+    anime({
+      targets: '.menu-item', 
+      translateY: [-20, 0],
+      opacity: [0, 1],
+      duration: 800,
+      easing: 'easeOutExpo',
+      delay: anime.stagger(100) 
+    });
+  </script>
+  <script>
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 0) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
 
-            parallax1.style.backgroundPositionY = -window.pageYOffset * parallax1Speed + 'px';
-            parallax2.style.backgroundPositionY = -window.pageYOffset * parallax2Speed + 'px';
-        });
-    </script>
+      // Efek Parallax
+      const parallax1 = document.querySelector('.parallax-1');
+      const parallax2 = document.querySelector('.parallax-2');
+
+      let parallax1Speed = 0.1;
+      let parallax2Speed = 0.2;
+
+      parallax1.style.backgroundPositionY = -window.pageYOffset * parallax1Speed + 'px';
+      parallax2.style.backgroundPositionY = -window.pageYOffset * parallax2Speed + 'px';
+    });
+  </script>
 </body>
 </html>
